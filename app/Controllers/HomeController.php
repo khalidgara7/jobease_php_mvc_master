@@ -1,5 +1,8 @@
 <?php
 namespace App\Controllers;
+
+use App\Models\OfferModel;
+use App\Models\StatistiquesModel;
 use App\Models\UserModel;
 
 class HomeController
@@ -7,9 +10,9 @@ class HomeController
     public function index()
     {
         $userModel = new UserModel();
-    
-        // Fetch data from the "users" table
+        $offersModel = new OfferModel();
 
+        $offers = $offersModel->getAllOffers();
         $users = $userModel->getAllUsers();
         // Your controller logic goes here
         $data = 'Hello, this is the home page!';
@@ -18,6 +21,18 @@ class HomeController
       
 
     }
+    public function login(){
+
+        require(__DIR__ .'../../../view/login.php');
+    }
+    public function register(){
+        require(__DIR__ .'../../../view/register.php');
+    }
+    public function postRegister(){
+        $register = new AuthenticationController();
+        $register->register();
+    }
+
     public function fetchMoreUsers()
     {
        
@@ -31,5 +46,7 @@ class HomeController
         echo json_encode(['users' => $moreUsers]);
         exit;
     }
+
+
 }
 ?>

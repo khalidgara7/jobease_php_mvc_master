@@ -36,7 +36,7 @@ class Database
         return self::$instance;
     }
 
-    public function getConnection() // used function get() for access to a private static property.
+    public function getConnection() // "used function get() for access to a private static property."
     {
         return $this->mysqli;
     }
