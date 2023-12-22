@@ -42,7 +42,8 @@ class UserModel
 
     public function deleteofere($id){
         $data = "delete from offreemploi where OffreID = $id";
-        $result = $this->db->query($data);
+        return $this->db->query($data);
+
     }
 }
 

@@ -93,7 +93,7 @@
                             <div class="dropdown-menu dropdown-menu-end position-absolute">
                                 <a class="dropdown-item" href="#">Profile</a>
                                 <a class="dropdown-item" href="#">Account Setting</a>
-                                <a class="dropdown-item" href="../login.php">Log out</a>
+                                <a class="dropdown-item" href="?route=logout">Log out</a>
                             </div>
                         </li>
                     </ul>
@@ -279,7 +279,7 @@
 
                 <div class="d-flex w-100 justify-content-center">
                 <button type="submit" name="Addoffer" class="btn btn-success btn-block mb-4 me-4 save">Save Edit</button>
-                <div class="btn btn-danger btn-block mb-4 annuler" >Annuler</div>
+                <button class="btn btn-danger btn-block mb-4" type="button" data-bs-dismiss="modal" >Annuler</button>
                 </div>
               </form>
                 

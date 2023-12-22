@@ -3,7 +3,7 @@
         'name' => 'youcode/jobease_php_mvc-master',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1423eca68ad06f078a85ff8d8ba18864171490ab',
+        'reference' => '14380996485d3ee3708b620a1826d96cc26b8783',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'youcode/jobease_php_mvc-master' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1423eca68ad06f078a85ff8d8ba18864171490ab',
+            'reference' => '14380996485d3ee3708b620a1826d96cc26b8783',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

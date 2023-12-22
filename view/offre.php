@@ -30,7 +30,7 @@
                         <a href="candidat.php" class="sidebar_link"> <img src="/assets/img/agents.svg" alt="icon">Candidat</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="?route=offer" class="sidebar_link"> <img src="/assets/img/task.svg" alt="icon">Offre</a>
+                            <a href="?route=offer" class="sidebar_link"> <img src="/assets/img/task.svg" alt="icon">Offre</a>
                     </li>
                     <li class="sidebar_item">
                         <a href="contact.php" class="sidebar_link"><img src="/assets/img/agent.svg" alt="icon">Contact</a>
@@ -150,7 +150,7 @@
                     </tbody>
                 </table>
             </section>
-            
+
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

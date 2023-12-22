@@ -17,19 +17,22 @@ switch ($route) {
         $controller = new HomeController();
         $controller->register();
         break;
-        case 'postRegister':
+    case 'postRegister':
         $controller = new HomeController();
         $controller->postRegister();
-        $controller->login();
         break;
     //
-    case 'login':
+    case 'login':// for show page login.
         $controller = new HomeController();
-        $controller->login();
+        $controller->loginView();
         break;
-    case 'login_post':
+    case 'login_post': // for submit login form
         $controller = new \App\Controllers\AuthenticationController();
         $controller->login();
+        break;
+    case 'logout':
+        $controller = new \App\Controllers\AuthenticationController();
+        $controller->logout();
         break;
     case 'dashboard_admin':
         $controller = new \App\Controllers\dashboardController();
@@ -46,6 +49,10 @@ switch ($route) {
     case 'offer':
             $offercontrole = new \App\Controllers\offerController();
             $offercontrole->getAllOffer();
+            break;
+    case 'offer_apply':
+            $offercontrole = new OfferController();
+            $offercontrole->applyOffer();
             break;
     case 'insertoffer':
             $offercontrole = new OfferController();

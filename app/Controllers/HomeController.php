@@ -21,7 +21,7 @@ class HomeController
       
 
     }
-    public function login(){
+    public function loginView(){
 
         require(__DIR__ .'../../../view/login.php');
     }
@@ -31,6 +31,7 @@ class HomeController
     public function postRegister(){
         $register = new AuthenticationController();
         $register->register();
+        $this->loginView();
     }
 
     public function fetchMoreUsers()

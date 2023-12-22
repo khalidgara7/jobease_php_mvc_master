@@ -1,3 +1,8 @@
+<?php
+if (! session_id())
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +68,7 @@
                             }else{
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.php">Log out</a>
+                            <a class="nav-link" href="?route=logout">Log out</a>
                         </li>
                         <?php
                     }
@@ -100,7 +105,7 @@
             ?>
             <article class="postcard light green">
                 <a class="postcard__img_link" href="#">
-                    <img class="postcard__img" src="./dashboard/img/uploads/<?=$offer['Image']?>" alt="Image Title" />
+                    <img class="postcard__img" src="../public/assets/img/uploads<?=$offer['Image']?>" alt="Image Title" />
                 </a>
                 <div class="postcard__text t-dark">
                     <h3 class="postcard__title green"><a href="#"><?= $offer['TitreOffre'] ?></a></h3>
@@ -116,7 +121,7 @@
                         <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
                         <li class="tag__item play green">
                                 <input type="hidden" name="job_id" value="<?=@$offer['OffreID']?>">
-                                <a href="?route=login"><button class="" type="submit" name="apply"
+                                <a href="?route=offer_apply"><button class="" type="submit" name="apply"
                                 >APPLY NOW
                                 </button></a>
                         </li>

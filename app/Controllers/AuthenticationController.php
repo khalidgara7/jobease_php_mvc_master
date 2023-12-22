@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use http\Client\Curl\User;
+use MongoDB\Driver\Session;
 
 class AuthenticationController
 {
@@ -46,7 +47,10 @@ class AuthenticationController
     }
 
     public function logout() {
-
+        session_start();
+        session_destroy();
+        $controler = new HomeController();
+        $controler->loginView();
     }
 
 }

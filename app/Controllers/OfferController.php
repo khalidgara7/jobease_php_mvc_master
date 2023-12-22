@@ -17,10 +17,15 @@ class offerController
     public function InsertOffer()
     {
         if (isset($_POST['Addoffer'])) {
-            $md = new OfferModel();
-            $md->save($_POST['title'],$_POST['description'],$_POST['enterprise'],$_POST['local'],$_POST['taskstatus'],uploadimage());
-
-//        require(__DIR__ .'../../../view/offre.php');
+            $offer = new OfferModel();
+            $alert = $offer->saveoffer($_POST['title'], $_POST['description'], $_POST['enterprise'],$_POST['local'],$_POST['taskstatus'],$this->uploadimage());
+            if($alert){
+                $_SESSION['success'] = "this offer is inserted";
+            }else {
+                echo "<script>alert('not save')</script>";
+            }
+            $this ->getAllOffer();
+            //require(__DIR__ .'../../../view/offre.php');
         }
     }
 
@@ -47,8 +52,8 @@ class offerController
                     print_r($_FILES['my_image']);
                     echo "</pre>";
                     die();*/
-                    $_SESSION['Error'] = "Sorry, your file is too large.";
-                    header('location: ../dashboard/dashboard.php');
+                    $_SESSION['Error'] = "Sorry, your file is too large.";/*
+                    header('location: ../../public/assets/img/uploads');*/
                 }
                 else
                 {
@@ -60,13 +65,16 @@ class offerController
 
                     if (in_array($img_ex_lc, $allowed_exs))
                     {
-                        $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-                        $img_upload_path = '../dashboard/img/uploads/'.$new_img_name;
+                        $unique = uniqid() ;
+                        $new_img_name = $unique.'-'.$img_name;
+
+                        $img_upload_path = 'assets/img/uploads/'.$new_img_name;
                         move_uploaded_file($tmp_name, $img_upload_path);
+
                     }
                     else {
-                        $_SESSION['Error'] = "You can't upload files of this type";
-                        header('location:../dashboard/dashboard.php');
+                        $_SESSION['Error'] = "You can't upload files of this type";/*
+                        header('location:../dashboard/dashboard.php');*/
                     }
                 }
             }
@@ -77,6 +85,10 @@ class offerController
             }
         }
         return $new_img_name;
+    }
+
+    public function applyOffer(){
+
     }
 
 }
