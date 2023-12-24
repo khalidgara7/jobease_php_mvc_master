@@ -42,10 +42,7 @@ switch ($route) {
         $controller = new HomeController();
         $controller->index();
         break;
-    case 'fetchMoreUsers':
-        $controller = new HomeController();
-        $controller->fetchMoreUsers();
-        break;
+
     case 'offer':
             $offercontrole = new \App\Controllers\offerController();
             $offercontrole->getAllOffer();
@@ -53,6 +50,10 @@ switch ($route) {
     case 'offer_apply':
             $offercontrole = new OfferController();
             $offercontrole->applyOffer();
+            break;
+    case 'updateCandidature':
+            $offercontrole = new OfferController();
+            $offercontrole->updateStatusCandidature();
             break;
     case 'insertoffer':
             $offercontrole = new OfferController();
@@ -62,9 +63,25 @@ switch ($route) {
             $offercontrole = new DeleteOfferController();
             $offercontrole->deleteOffer();
             break;
+    case 'profile':
+        $logincontroller = new HomeController();
+        $logincontroller->profile();
+        break;
+    case 'updateprofile':
+        $logincontroller = new HomeController();
+        $logincontroller->updateprofile();
+        break;
+    case 'OfferRequest':
+        $offercontrole = new OfferController();
+        $offercontrole->RequestOffers();
+        break;
     case 'creat':
         $logincontroller = new LoginController();
         $logincontroller->creat();
+        break;
+    case 'fetchMoreUsers':
+        $controller = new HomeController();
+        $controller->fetchMoreUsers();
         break;
     // Add more cases for other routes as needed
     default:

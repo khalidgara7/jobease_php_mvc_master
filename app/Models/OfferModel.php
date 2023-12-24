@@ -16,7 +16,8 @@ class OfferModel
 
     public function getAllOffers(){
 
-        $data = "select * from offreemploi";
+        $data = "select o.* from offreemploi o where o.OffreID NOT IN 
+                  ( SELECT c.OffreID from candidature c WHERE c.UserID = ". $_SESSION['UserID'] .")";
         $result = mysqli_query($this->db, $data);
         $table = [];
         while ($row = mysqli_fetch_assoc($result)){
@@ -25,25 +26,31 @@ class OfferModel
         return $table;
     }
 
-public function saveoffer($title, $descrip, $entreprise, $local, $status, $image){
+    public function saveoffer($title, $descrip, $entreprise, $local, $status, $image){
 
-    $query1 = "INSERT INTO offreemploi (`TitreOffre` , `DescriptionOffre`, `Entreprise`, `Localisation`, `Statut`, `Image`) values ('$title', '$descrip', '$entreprise',' $local', '$status', '$image')";
-    return mysqli_query($this->db,$query1);
+        $query1 = "INSERT INTO offreemploi (`TitreOffre` , `DescriptionOffre`, `Entreprise`, `Localisation`, `Statut`, `Image`)
+    values ('$title', '$descrip', '$entreprise',' $local', '$status', '$image')";
+        return mysqli_query($this->db,$query1);
 
-}
+    }
 
-/// apply theos not complete.
-    /*public function applyOffer($iduser, $idoffer, $dateapplying){
-        if($this->isUserAlreadyApplyToOffre($iduser, $idoffer)){
-            echo "<script>alert('User Already Applied')</script>";
-            return; // exit in the method immediately and return void
+    public function getAllCandidature(){
+
+        $data = "SELECT c.CandidatureID, u.NomUtilisateur, o.TitreOffre, c.DateSoumission, c.status FROM candidature c 
+                    INNER JOIN jobeasy.utilisateur u on c.UserID = u.UserID
+                    INNER JOIN jobeasy.offreemploi o on c.OffreID = o.OffreID";
+        $result = mysqli_query($this->db, $data);
+        $table = [];
+        while ($row = mysqli_fetch_assoc($result)){
+            $table[] = $row;
         }
+        return $table;
+    }
 
-        $query = "INSERT INTO `candidature`(`UserID`, `OffreID`, `DateSoumission`) VALUES ('$iduser','$idoffer','$dateapplying')";
-        $rslt = mysqli_query($this->conn, $query);
-        if($rslt){
-            echo "<script>alert('request successfully')</script>";
-        }
-    }*/
+    public function updateStatusCandidature($candidatureId, $status)
+    {
+        $update = "UPDATE candidature  SET status='$status' WHERE CandidatureID = '$candidatureId'";
+        $res = mysqli_query($this->db, $update);
+    }
 
 }

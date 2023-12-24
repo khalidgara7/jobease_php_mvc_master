@@ -91,6 +91,7 @@
                                 <img src="/assets/img/photo_admin.svg" alt="icon">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end position-absolute">
+                                <a class="dropdown-item" href="?route=OfferRequest">OfferRequest</a>
                                 <a class="dropdown-item" href="#">Profile</a>
                                 <a class="dropdown-item" href="#">Account Setting</a>
                                 <a class="dropdown-item" href="?route=logout">Log out</a>

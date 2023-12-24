@@ -48,6 +48,17 @@ class HomeController
         exit;
     }
 
+    public  function profile(){
 
+        require(__DIR__ .'/../../view/Profile.php');
+
+    }
+
+    public function updateprofile()
+    {
+        $update = new UserModel();
+        $update->Update_Profile();
+        $this->profile();
+    }
 }
 ?>

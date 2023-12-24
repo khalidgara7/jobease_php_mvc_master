@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+if(!session_id()){
+    session_start();
+}
+
 class UserModel
 {
     private $db;
@@ -45,6 +49,27 @@ class UserModel
         return $this->db->query($data);
 
     }
+    public function Update_Profile(){
+        $UserID = $_SESSION['UserID'];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $psw = $_POST['password'];
+            $hash = password_hash($psw, PASSWORD_DEFAULT);
+            $update = "UPDATE utilisateur  SET NomUtilisateur='$name', Email = '$email', MotDePasse = '$hash' WHERE UserID = '$UserID'";
+            $res = mysqli_query($this->db, $update);
+            if($res){
+                $_SESSION['name'] = $name;
+                $_SESSION['email'] = $email;
+            }
+
+    }
+
+    public function SendOffer($idoffer,$iduser){
+        $query = "INSERT INTO `candidature`(`UserID`, `OffreID`, `status`) VALUES ('$iduser','$idoffer', 'pending')";
+        $rslt = mysqli_query($this->db, $query);
+    }
+
+
 }
 
 ?>

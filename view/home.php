@@ -42,7 +42,7 @@ if (! session_id())
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="controler/profile.php">Profile</a>
+                        <a class="nav-link" href="?route=profile">Profile</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -100,12 +100,13 @@ if (! session_id())
     <div class="container py-2" id="offer-container">
 
         <?php
+        if(count($offers)) {
         foreach ($offers as $offer)
         {
             ?>
             <article class="postcard light green">
                 <a class="postcard__img_link" href="#">
-                    <img class="postcard__img" src="../public/assets/img/uploads<?=$offer['Image']?>" alt="Image Title" />
+                    <img class="postcard__img" src="/assets/img/uploads/<?=$offer['Image']?>" alt="Image Title" />
                 </a>
                 <div class="postcard__text t-dark">
                     <h3 class="postcard__title green"><a href="#"><?= $offer['TitreOffre'] ?></a></h3>
@@ -121,14 +122,28 @@ if (! session_id())
                         <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
                         <li class="tag__item play green">
                                 <input type="hidden" name="job_id" value="<?=@$offer['OffreID']?>">
-                                <a href="?route=offer_apply"><button class="" type="submit" name="apply"
-                                >APPLY NOW
-                                </button></a>
+                                <a href="?route=offer_apply&offerid=<?= $offer['OffreID']?>">
+                                APPLY NOW</a>
                         </li>
                     </ul>
                 </div>
             </article>
             <?php
+        }
+        }else{
+            ?>
+            <article class="postcard light green">
+                <div class="postcard__text t-dark">
+                    <h3 class="postcard__title green">No offers Disponible</h3>
+                    <div class="postcard__subtitle small">
+                        <time datetime="2020-05-25 12:00:00">
+                        </time>
+                    </div>
+                    <div class="postcard__bar"></div>
+
+                </div>
+            </article>
+        <?php
         }
         ?>
     </div>

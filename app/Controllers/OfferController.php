@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Controllers;
+session_start();
 
 
 use App\Models\OfferModel;
+use App\Models\UserModel;
 
 class offerController
 {
@@ -87,8 +88,35 @@ class offerController
         return $new_img_name;
     }
 
-    public function applyOffer(){
+    public function RequestOffers() {
+        $model = new OfferModel();
+        $candidatures = $model->getAllCandidature();
+        require(__DIR__ .'../../../view/OfferRequest.php');
 
+    }
+
+    public function  ApplyOffer(){
+
+        if(isset($_GET['offerid'])){
+            $id = $_GET['offerid'];
+            $userid = $_SESSION['UserID'];
+            $obj = new UserModel();
+            $rsltfunc = $obj->SendOffer($id,$userid);
+
+            header("Location: ./index.php?route=home");
+
+
+        }
+    }
+
+    public function updateStatusCandidature()
+    {
+        $candidatureId = $_GET['candidature'];
+        $status = $_GET['status'];
+
+        $model = new OfferModel();
+        $model->updateStatusCandidature($candidatureId, $status);
+        header("Location: ?route=OfferRequest");
     }
 
 }
