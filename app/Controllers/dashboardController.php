@@ -18,6 +18,7 @@ class dashboardController
         $countOffer = $statistic->countOffer();
         $countactifOffer = $statistic->countOfferactif();
         $countinactifoffer = $statistic->countofferinactif();
+        $countiofferapproved = $statistic->countofferapproved();
 
         require(__DIR__ .'../../../view/dashboard.php');
     }

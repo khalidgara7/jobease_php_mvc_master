@@ -79,11 +79,11 @@ if (! session_id())
     </nav>
 </header>
 
-<section action="#" method="get" class="search">
+<section action="?route=searchOffers" method="get" class="search">
     <h2>Find Your Dream Job</h2>
     <form class="form-inline">
         <div class="form-group mb-2">
-            <input type="text" name="keywords" id="keywords" placeholder="Keywords" onkeyup="searchOfferByKeywords()">
+            <input type="text" name="keywords" id="keywords" placeholder="Keywords" onkeyup="searchByKeyWord()">
         </div>
         <div class="form-group mx-sm-3 mb-2">
             <input type="text" name="location" placeholder="Location">
@@ -91,7 +91,7 @@ if (! session_id())
         <div class="form-group mx-sm-3 mb-2">
             <input type="text" name="company" placeholder="Company">
         </div>
-        <button type="button" class="btn btn-primary mb-2">Search</button>
+        <button type="submit"  class="btn btn-primary mb-2">Search</button>
     </form>
 </section>
 <!--------------------------  card  --------------------->
@@ -160,6 +160,6 @@ if (! session_id())
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"></script>
-<script src="./js/index.js"></script>
+<script src="./assets/js/js_earch/index.js"></script>
 
 </html>

@@ -19,7 +19,7 @@ class UserModel
     public function register($name, $email, $password){
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $query1 = "INSERT INTO utilisateur (`NomUtilisateur`, `MotDePasse`, `Email`, `Role`) VALUES ('$name', '$hash', '$email', 'Admin')";
+        $query1 = "INSERT INTO utilisateur (`NomUtilisateur`, `MotDePasse`, `Email`, `Role`) VALUES ('$name', '$hash', '$email', 'condidat')";
         $res = mysqli_query($this->db, $query1);
         return $res;
     }
@@ -69,6 +69,16 @@ class UserModel
         $rslt = mysqli_query($this->db, $query);
     }
 
+    public function searchByKeyWord($searchText)
+    {
+        $data = "select * from offreemploi o where o.DescriptionOffre LIKE '%$searchText%' OR  o.TitreOffre LIKE '%$searchText%'";
+        $result = mysqli_query($this->db, $data);
+        $table = [];
+        while ($row = mysqli_fetch_assoc($result)){
+            $table[] = $row;
+        }
+        return $table;
+    }
 
 }
 

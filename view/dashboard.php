@@ -166,8 +166,7 @@
                                     <div>
                                         <p class="mb-0">Offers Approuver</p>
                                         <div class="mt-4">
-                                            <h3><strong>76%</strong></h3>
-                                            <p><strong>57%</strong> Completed</p>
+                                            <h3><strong><?=$countiofferapproved?></h3>
                                         </div>
                                     </div>
                                     <div class="">

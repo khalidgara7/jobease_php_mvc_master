@@ -60,5 +60,13 @@ class HomeController
         $update->Update_Profile();
         $this->profile();
     }
+
+    public function searchByKeyWord($searchText){
+            $searchOffer = new UserModel();
+            $search = $searchOffer->searchByKeyWord($searchText);
+            echo json_encode($search);
+    }
+
+
 }
-?>
+

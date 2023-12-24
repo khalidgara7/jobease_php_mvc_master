@@ -29,4 +29,10 @@ class StatistiquesModel {
         $row = mysqli_fetch_assoc($rsult);
         return $row['inactifoffer'];
     }
+    public function countofferapproved(){
+        $offeraproved = "select count(*) as offerAproved from candidature where status = 'accept'";
+        $rsult = $this->db->query($offeraproved);
+        $row = mysqli_fetch_assoc($rsult);
+        return $row['offerAproved'];
+    }
 }

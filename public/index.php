@@ -51,6 +51,13 @@ switch ($route) {
             $offercontrole = new OfferController();
             $offercontrole->applyOffer();
             break;
+    case 'searchOffers':
+            if (isset($_GET['searchText'])){
+                $searchText = $_GET['searchText'];
+                $home = new HomeController();
+                $home->searchByKeyWord($searchText);
+            }
+            break;
     case 'updateCandidature':
             $offercontrole = new OfferController();
             $offercontrole->updateStatusCandidature();
